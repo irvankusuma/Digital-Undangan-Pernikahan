@@ -15,7 +15,7 @@ export default function MusicPlayer({ songs, defaultSong, className }: MusicPlay
   const [currentSongIndex, setCurrentSongIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isReady, setIsReady] = useState(false)
-  const playerRef = useRef<YT.Player | null>(null)
+  const playerRef = useRef<any>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
   const activeSongs = songs.length > 0 ? songs : defaultSong ? [defaultSong] : []
