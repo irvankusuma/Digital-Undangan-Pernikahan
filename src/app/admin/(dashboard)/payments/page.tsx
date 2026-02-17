@@ -16,8 +16,17 @@ export default function PaymentsPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
   const [selectedMethod, setSelectedMethod] = useState<PaymentMethod | null>(null)
-  const [formData, setFormData] = useState({
-    type: 'bank' as const,
+  type PaymentType = 'bank' | 'ewallet'
+  
+  const [formData, setFormData] = useState<{
+    type: PaymentType
+    name: string
+    account_number: string
+    account_name: string
+    logo_url: string
+    is_active: boolean
+  }>({
+    type: 'bank',
     name: '',
     account_number: '',
     account_name: '',
@@ -61,7 +70,7 @@ export default function PaymentsPage() {
   const handleEdit = (method: PaymentMethod) => {
     setSelectedMethod(method)
     setFormData({
-      type: method.type as 'bank' | 'ewallet',
+      type: method.type as PaymentType,
       name: method.name,
       account_number: method.account_number,
       account_name: method.account_name,
@@ -93,7 +102,7 @@ export default function PaymentsPage() {
 
   const resetForm = () => {
     setFormData({
-      type: 'bank',
+      type: 'bank' as PaymentType,
       name: '',
       account_number: '',
       account_name: '',
