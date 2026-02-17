@@ -46,9 +46,9 @@ export default function InvitationPage() {
       if (invitationData) {
         await logView({
           invitation_id: invitationData.id,
-          visitor_name: null,
-          ip_address: null,
-          user_agent: typeof window !== 'undefined' ? navigator.userAgent : null,
+          visitor_name: undefined,
+          ip_address: undefined,
+          user_agent: typeof window !== 'undefined' ? navigator.userAgent : undefined,
         })
       }
     } catch (error) {
